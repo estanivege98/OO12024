@@ -1,4 +1,4 @@
-package ar.edu.info.unlp.ejercicioDemo;
+package ar.edu.unlp.info.oo1;
 
 /**
  * De esta forma crearemos las clases del ejercicio
@@ -10,7 +10,6 @@ public class Persona {
 	private String apellido;
 	private String dni;
 	
-
 	public String getNombre() {
 		return nombre;
 	}
