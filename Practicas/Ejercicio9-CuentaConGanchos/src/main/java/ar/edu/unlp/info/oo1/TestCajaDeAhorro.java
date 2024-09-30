@@ -14,8 +14,8 @@ public class TestCajaDeAhorro {
 
     @Test
     void testDepositar(){
-        caja1.depositar(100);
-        assertEquals(498, caja1.getSaldo());
+        caja1.depositar(200);
+        assertEquals(596, caja1.getSaldo());
     }
     @Test
     void testExtraer(){

@@ -17,7 +17,7 @@ public class CajaDeAhorro extends Cuenta{
     }
     @Override
     public boolean transferirACuenta(double monto, Cuenta cuentaDestino){
-        return super.transferirACuenta(monto * comision, cuentaDestino);
+        return super.transferirACuenta(monto + (monto * comision), cuentaDestino);
     }
     @Override
     public void depositar(double monto){
