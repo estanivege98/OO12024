@@ -1,0 +1,47 @@
+@startuml
+
+class ClienteDeCorreo{
++<<create>> ClienteDeCorreo(inbox: Carpeta)
++crearCarpeta(nombre: String)
++mover(mail: Email, origen: Carpeta, destino: Carpeta)
++recibir(mail: Email)
++buscar(texto: Sting): Email
++espacioOcupado(): Integer
+}
+
+class Carpeta {
++<<create>> Carpeta(nombre: String)
+-nombre: String
++getNombre(): String
++getEmails(): Email [*]
++store(mail: Email)
++delete(mail: Email)
++mover(mail: Email, carpeta: Carpeta)
++searchMails(texto: String): Email
++tamañoCarpeta(): Integer
+}
+
+class Email {
++<<create>> Email()
+-titulo: String
+-cuerpo: String
++getTitulo(): String
++getCuerpo(): String
++agregarAdjunto(archivo: Archivo)
++contieneTexto(texto: String): Boolean
++tamañoMail(): Integer
++adjuntos(): Archivo [*]
+}
+
+class Archivo {
+-nombre: String
++<<create>> Archivo(nombre: String)
++getNombre(): String
++tamañoFile(): Integer
+}
+ClienteDeCorreo "inbox 1" -down-> Carpeta
+ClienteDeCorreo "carpetas 0..*" -down-> Carpeta
+Carpeta "emails 0..*" -right-> Email
+Email "adjuntos 0..*" -down-> Archivo
+
+@enduml
