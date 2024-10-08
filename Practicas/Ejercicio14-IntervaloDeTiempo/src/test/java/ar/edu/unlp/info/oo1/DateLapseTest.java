@@ -2,7 +2,7 @@ package ar.edu.unlp.info.oo1;
 import org.junit.jupiter.api.*;
 import java.time.LocalDate;
 
-public class TestDateLapse {
+public class DateLapseTest {
     private DateLapse dateLapse;
     private LocalDate fecha1;
     private LocalDate fecha2;

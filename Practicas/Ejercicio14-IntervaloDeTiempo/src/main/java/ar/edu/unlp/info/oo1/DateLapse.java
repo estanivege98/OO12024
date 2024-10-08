@@ -20,7 +20,7 @@ public class DateLapse {
     }
     private boolean compararFechas(LocalDate from, LocalDate to){
         // Compara dos fechas y retorna true si son iguales
-        return from.isBefore(to) && to.isAfter(from);
+        return from.isBefore(to) || from.isEqual(to);
     }
     public int sizeInDays(){
          // Retorna la cantidad de días que hay entre las dos fechas

@@ -27,6 +27,6 @@ public class DateLapseB {
 
     public boolean includesDate(LocalDate other){
         // Retorna true si la fecha pasada como parámetro está dentro del rango
-        return this.getFrom().isBefore(other) && this.getTo().isAfter(other);
+        return !other.isBefore(this.getFrom()) && !other.isAfter(this.getTo());
     }
 }
