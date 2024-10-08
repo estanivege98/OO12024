@@ -1,13 +1,14 @@
 package ar.edu.unlp.info.oo1;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class DateLapse {
     LocalDate from;
     LocalDate to;
-    public DateLapse(){
-        this.from = LocalDate.of(1972, 12, 15);
-        this.to = LocalDate.of(2032, 12, 15);
+    public DateLapse(LocalDate from, LocalDate to){
+        this.from = from;
+        this.to = to;
     }
     public LocalDate getFrom(){
         // Retorna la fecha de inicio del rango
@@ -24,7 +25,7 @@ public class DateLapse {
     public int sizeInDays(){
          // Retorna la cantidad de días que hay entre las dos fechas
         if (compararFechas(from, to)){
-            return (int) from.until(to).getDays();
+            return (int) ChronoUnit.DAYS.between(from, to);
         }
         return 0;
     }

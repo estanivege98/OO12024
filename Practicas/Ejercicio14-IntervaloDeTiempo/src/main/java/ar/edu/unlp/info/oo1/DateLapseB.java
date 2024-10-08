@@ -5,9 +5,9 @@ public class DateLapseB {
     private LocalDate from;
     private int sizeInDays;
 
-    public DateLapseB(){
-        this.from = LocalDate.of(1972, 12, 15);
-        this.sizeInDays = 21915;
+    public DateLapseB(LocalDate fecha, int sizeInDays){
+        this.from = fecha;
+        this.sizeInDays = sizeInDays;
     }
 
     public LocalDate getFrom(){
