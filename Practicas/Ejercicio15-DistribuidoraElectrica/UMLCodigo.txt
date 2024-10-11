@@ -1,0 +1,42 @@
+@startuml
+Class Distribuidora {
+-precioKW: Real
++agregarUsuario(usuario: Usuario)
++getUsuarios(): Usuario [*]
++getPrecioKW(): Real
++setPrecio(precio: Real)
++facturar(): Factura[*]
+
+}
+Class Usuario {
+-nombre: String
+-apellido: String
+
++ultimoConsumo(): Consumo
++generarFactura(cons: Consumo): Factura
+}
+Class Consumo {
+-fechaConsumo: Date
+-energiaActiva: Real
+-energiaReactiva: Real
++getEnergiaActiva(): Real
++getEnergiaReactiva(): Real
++factorDePotencia(): Real
+}
+Class Factura {
+-fechaEmision: Date
+-bonificacion: Boolean
+-calcularBonificacion(): Real
+-calcularCostoConsumo(): Real
++montoFinal(): Real
+}
+Class CuadroTarifario{
+-precioPorKWH: Real
++getPrecioPorKWH(): Real
+}
+Factura --> CuadroTarifario
+Usuario "facturas 0..n"--> Factura
+Usuario "consumos 0..n"--> Consumo
+Factura -right-> Consumo
+Distribuidora "usuarios 0..n"--> Usuario
+@enduml
