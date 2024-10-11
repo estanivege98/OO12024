@@ -1,40 +1,41 @@
 @startuml
 Class Distribuidora {
--precioKW: Real
++<<create>> Distribuidora()
 +agregarUsuario(usuario: Usuario)
 +getUsuarios(): Usuario [*]
-+getPrecioKW(): Real
-+setPrecio(precio: Real)
-+facturar(): Factura[*]
++facturar(precioFact: Real): Factura[*]
 
 }
 Class Usuario {
 -nombre: String
 -apellido: String
-
++<<create>> Usuario(nombre: String, apellido: String)
 +ultimoConsumo(): Consumo
-+generarFactura(cons: Consumo): Factura
++generarFactura(cons: Consumo, precioFact: Real): Factura
 }
 Class Consumo {
 -fechaConsumo: Date
 -energiaActiva: Real
 -energiaReactiva: Real
++<<create>> Consumo(eA: Real, eR: Real)
 +getEnergiaActiva(): Real
 +getEnergiaReactiva(): Real
 +factorDePotencia(): Real
 }
 Class Factura {
 -fechaEmision: Date
--bonificacion: Boolean
++<<create>> Factura(user: Usuario, consumo: Consumo, precioFact: Real)
 -calcularBonificacion(): Real
 -calcularCostoConsumo(): Real
 +montoFinal(): Real
++getFechaEmision(): Date
 }
 Class CuadroTarifario{
 -precioPorKWH: Real
 +getPrecioPorKWH(): Real
++setPrecioPorKWH(precio: Real)
 }
-Factura --> CuadroTarifario
+Distribuidora -right-> CuadroTarifario
 Usuario "facturas 0..n"--> Factura
 Usuario "consumos 0..n"--> Consumo
 Factura -right-> Consumo
