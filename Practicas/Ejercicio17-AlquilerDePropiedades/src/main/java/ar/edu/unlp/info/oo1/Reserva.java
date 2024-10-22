@@ -10,11 +10,13 @@ public class Reserva {
         this.propiedad = propiedad;
         this.periodo = periodo;
     }
-
+    public Propiedad getPropiedad(){
+        return this.propiedad;
+    }
+    public DateLapse getPeriodo(){
+        return this.periodo;
+    }
     public double calcularPrecioReserva(){
         return periodo.sizeInDays() * propiedad.getPrecio();
-    }
-    public double calcularIngreso(){
-        
     }
 }

@@ -15,15 +15,33 @@ public class Propiedad {
         this.fechasReservadas = new ArrayList<DateLapse>();
     }
 
+    public void agregarPeriodoReserva(DateLapse periodo){
+        this.fechasReservadas.add(periodo);
+    }
+    public void quitarPeriodoReserva(DateLapse periodo){
+        this.fechasReservadas.remove(periodo);
+    }
     public List<DateLapse> getFechasReservadas(){
         return this.fechasReservadas;
     }
+
     public double getPrecio(){
         return this.precioNoche;
     }
+
     public boolean consultarDisponibilidad(DateLapse periodo){
         return fechasReservadas.stream()
                 .noneMatch(fecha -> fecha.overlaps(periodo));
     }
 
+    public double consultarPrecioPeriodo(DateLapse periodo){
+        return this.precioNoche * periodo.sizeInDays();
+    }
+
+    public double consultarIngresosPeriodo(DateLapse periodo){
+        return this.getFechasReservadas().stream()
+                .filter(fecha -> fecha.overlaps(periodo))
+                .mapToDouble(fecha -> this.consultarPrecioPeriodo(fecha))
+                .sum();
+    }
 }
