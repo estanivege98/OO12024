@@ -1,0 +1,42 @@
+@startuml
+class DateLapse{
+-from: LocalDate
+-to: LocalDate
++getFrom(): LocalDate
++getTo(): LocalDate
+-compararFechas(from: LocalDate, to: LocalDate)
++sizeInDays(): Integer
++includesDate(other: LocalDate): Boolean
++overlaps(other: DateLapse): Boolean
+}
+class Usuario{
+-nombre: String
+-dir: String
+-DNI: String
+-reservas: Reservas [*]
+-propiedadEnAlquiler: Reservas [*]
++crearReserva(periodo: DateLapse, propiedad: Propiedad): Boolean
++cancelarReserva(periodo: DateLapse, propiedad: Propiedad): Boolean
+}
+
+class Propiedad{
+-direccion: String
+-nomDesc: String
+-precioNoche: Real
++consultarDisponibilidad(periodo: DateLapse): Boolean
++getPrecio(): Boolean
+}
+
+class Reserva{
+-usuario: Usuario
+-propiedad: Propiedad
+-periodo: DateLapse
++calcularPrecioReserva(): Real
++calcularIngresos()
+}
+
+Usuario --> Reserva: reservas 0..*
+Reserva --> Propiedad
+Reserva --> DateLapse
+Propiedad --> DateLapse: fechaReservas 0..*
+@enduml
