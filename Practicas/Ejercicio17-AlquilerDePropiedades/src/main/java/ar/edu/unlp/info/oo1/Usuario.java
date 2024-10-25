@@ -28,6 +28,7 @@ public class Usuario {
     public boolean cancelarReserva(Reserva reserva){
         if(this.reservas.contains(reserva) && !reserva.getPeriodo().includesDate(LocalDate.now())){
             this.reservas.remove(reserva);
+            //reserva.removerReserva();
             reserva.getPropiedad().getFechasReservadas().remove(reserva.getPeriodo());
             return true;
         }
