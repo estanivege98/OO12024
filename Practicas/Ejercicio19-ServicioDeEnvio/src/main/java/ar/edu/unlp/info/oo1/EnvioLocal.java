@@ -9,8 +9,16 @@ public class EnvioLocal extends Envio {
         super(origen, destino, fechaDespacho, pesoGramos);
         this.tipoEnvio = tipoEnvio;
     }
+    public String getTipoEnvio(){
+        return this.tipoEnvio;
+    }
 
     public double costo(){
-        return 0;
+        if(this.tipoEnvio.equals("Entrega Rapida")){
+            return 1500;
+        }
+        else{
+            return 1000;
+        }
     }
 }

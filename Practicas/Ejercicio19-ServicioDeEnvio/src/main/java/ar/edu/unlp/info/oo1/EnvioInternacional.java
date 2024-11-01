@@ -10,9 +10,12 @@ public class EnvioInternacional extends Envio {
     }
 
     public double costo(){
-        return 0;
+        if(this.calcularKg() < 1){
+            return 5000 + (10 * this.pesoGramos);
+        }
+        return 5000 + (25 * this.pesoGramos);
     }
     public double calcularKg(){
-        return this.getPesoGramos() / 1000;
+        return this.pesoGramos / 1000;
     }
 }

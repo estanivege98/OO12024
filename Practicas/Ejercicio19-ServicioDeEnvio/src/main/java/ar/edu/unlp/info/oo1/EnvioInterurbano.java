@@ -11,6 +11,12 @@ public class EnvioInterurbano extends Envio{
     }
 
     public double costo(){
-        return 0;
+        if(this.distanciaKm < 100){
+            return 20 * this.pesoGramos;
+        }
+        if(this.distanciaKm < 500){
+            return 25 * this.pesoGramos;
+        }
+        return 30 * this.pesoGramos;
     }
 }

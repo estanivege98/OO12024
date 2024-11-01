@@ -5,6 +5,7 @@ abstract Cliente{
 -nombre: String
 +<<create>> Cliente(nombre: String, direccion: String)
 +getEnvios(): Envio [*]
++<<abstract>>calcularMonto(fechaInicio: Date, fechaFin: Date): Real
 }
 class PersonaFisica{
 -DNI: Integer
@@ -15,10 +16,10 @@ class ClienteCorporativo{
 +<<create>> ClienteCorporativo(nombre: String, direccion: String, CUIT: Integer)
 }
 abstract Envio{
--origen: String
--destino: String
--fechaDespacho: Date
--pesoGramos: Real
+#origen: String
+#destino: String
+#fechaDespacho: Date
+#pesoGramos: Real
 +<<create>> Envio(origen: String, destino: String, pesoGramos: Real, fechaDespacho: Date)
 +<<abstract>> costo(): Real
 }
@@ -43,8 +44,8 @@ class Empresa{
 +montoAPagar(cliente: Cliente, envio: Envio): Real
 }
 
-Cliente --^ PersonaFisica
-Cliente --^ ClienteCorporativo
+Cliente ^-- PersonaFisica
+Cliente ^-- ClienteCorporativo
 
 Envio ^-- EnvioLocal
 Envio ^-- EnvioInterurbano
