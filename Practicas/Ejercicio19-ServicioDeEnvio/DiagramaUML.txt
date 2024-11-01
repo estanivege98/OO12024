@@ -53,5 +53,5 @@ Envio ^-right- EnvioInternacional
 
 Envio "envios 0.*"<-left- Cliente
 
-Empresa -down->"totalEnvios 0..*" Envio
+Empresa -down-> Envio
 @enduml
