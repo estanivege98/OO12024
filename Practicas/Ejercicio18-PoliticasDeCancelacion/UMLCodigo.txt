@@ -1,0 +1,55 @@
+@startuml
+class DateLapse {
+  -from: LocalDate
+  -to: LocalDate
+  +getFrom(): LocalDate
+  +getTo(): LocalDate
+  +sizeInDays(): Integer
+  +includesDate(other: LocalDate): Boolean
+  +overlaps(other: DateLapse): Boolean
+}
+
+class Usuario {
+  -nombre: String
+  -direccion: String
+  -DNI: String
+  -reservas: Reserva [*]
+  -propiedadesEnAlquiler: Propiedad [*]
+  +crearReserva(periodo: DateLapse, propiedad: Propiedad): Boolean
+  +cancelarReserva(reserva: Reserva): Boolean
+  +getPropiedades(): Propiedad [*]
+  +agregarPropiedad(prop: Propiedad)
+  +quitarPropiedad(prop: Propiedad)
+  +calcularIngresos(periodo: DateLapse): Double
+}
+
+class Propiedad {
+  -direccion: String
+  -nomDesc: String
+  -precioNoche: Double
+  -fechasReservadas: DateLapse [*]
+  +<<create>> Propiedad(direccion: String, nomDesc: String, precioNoche: Real)
+  +agregarPeriodoReserva(pe: DateLapse)
+  +quitarPeriodoReserva(pe: DateLapse)
+  +fechasDentroPeriodo(pe: DateLapse)
+  +consultarDisponibilidad(periodo: DateLapse): Boolean
+  +getPrecio(): Double
+  +getPropiedades(): Propiedad [*]
+  +consultarPrecioPeriodo(pe: DateLapse): Real
+  +consultarIngresosPeriodo(pe: DateLapse): Real
+}
+
+class Reserva {
+  -usuario: Usuario
+  -propiedad: Propiedad
+  -periodo: DateLapse
+  +<<create>> Reserva(usuario: Usuario, propiedad: Propiedad, periodo: DateLapse)
+  +calcularPrecioReserva(): Double
+}
+
+Usuario --> "0..*" Reserva: reservas
+Usuario --> "0..*" Propiedad: propiedadesEnAlquiler
+Reserva --> Propiedad
+Reserva --> DateLapse
+Propiedad --> "0..*" DateLapse: fechasReservadas
+@enduml
