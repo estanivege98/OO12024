@@ -1,1 +1,2 @@
-Arquetipos de Orientacion a Objetos
+# Ejercicio 18
+Falta implementación

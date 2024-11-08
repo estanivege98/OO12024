@@ -6,23 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Ejercicio17-AlquilerDePropiedades" />
-        <module name="Ejercicio9-CuentaConGanchos" />
-        <module name="Ejercicio13-ClienteDeCorreo" />
-        <module name="Ejercicio11-ElInversor" />
-        <module name="Ejercicio10-JobScheduler" />
-        <module name="Ejercicio15-DistribuidoraElectrica" />
-        <module name="Ejercicio5-FigurasYCuerpos" />
-        <module name="Ejercicio7-RedDeAlumbrado" />
-        <module name="Ejercicio6-GenealogiaSalvaje" />
-        <module name="Ejercicio14-IntervaloDeTiempo" />
-        <module name="Ejercicio17-AlquilerDePropiedades (1)" />
-        <module name="Ejercicio12-VolumenYSuperficieSolidos" />
-        <module name="Ejercicio19-ServicioDeEnvio" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Ejercicio8-MethodLookup" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>

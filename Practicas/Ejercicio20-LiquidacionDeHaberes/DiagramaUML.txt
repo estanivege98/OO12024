@@ -1,0 +1,48 @@
+@startuml
+Class Empleado{
+-nombre: String
+-apellido: String
+-CUIL: Integer
+-fechaNacimiento: Date
+-cantidadHijos: Integer
+-conyuge: Boolean
+-reciboDeSueldo: ReciboDeSueldo
+
++<<create>>Empleado(cantidadDeHijos: Integer, conyuge: Boolean, nombre: String, CUIL: Integer, fechaNacimiento: Date)
++agregarContratoActivo(contrato: Contrato)
++terminarContratoActivo(contrato: Contrato
+-calculoAntiguedad(): Integer
++calcularSueldoAdicional(): Real
++generarRecibo(): ReciboDeSueldo
+}
+Class ReciboDeSueldo{
+    -sueldo: Real 
+    -antiguedad: Integer 
+    -fechaDePago: Date 
++<<create>>ReciboDeSueldo(emp: Empleado, sueldo: Real, antiguedad: Integer, fechaDePago: Date)
+}
+Abstract Contrato{
+-fechaInicio: Date
++<<create>>Contrato(fechaInicio: Date)
++<<abstract>>montoBasico(): Real
++<<abstract>>antiguedad(): Integer
++<<abstract>>activo(): Boolean
+}
+Class PorHoras{
+-valorHora: Double
+-horasMes: Integer
+-fechaFin: Date
++<<create>>PorHoras(fechaInicio: Date, valorHora: Real, horasMes: Integer, fechaFin: Date)
+}
+Class DePlanta{
+-sueldoMensual: Real
+-montoConyuge: Real
+-montoHijo: Real
++<<create>>DePlanta(fechaIncio: Date, sueldoMensual: Real, montoConyuge: Real, montoHijos: Real)
+}
+
+Empleado -->"contratos 0..*" Contrato
+DePlanta -up-^ Contrato
+PorHoras -up-^ Contrato
+ReciboDeSueldo "emp"<-- Empleado
+@enduml
