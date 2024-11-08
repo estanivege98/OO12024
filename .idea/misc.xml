@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio6-GenealogiaSalvaje/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio5-FigurasYCuerpos/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio7-RedDeAlumbrado/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio8-MethodLookup/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio9-CuentaConGanchos/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio10-JobScheduler/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio11-ElInversor/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio12-VolumenYSuperficieSolidos/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio13-ClienteDeCorreo/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio14-IntervaloDeTiempo/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio15-DistribuidoraElectrica/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio17-AlquilerDePropiedades/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio18-PoliticasDeCancelacion/pom.xml" />
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio19-ServicioDeEnvio/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/Practicas/Ejercicio8-MethodLookup/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
