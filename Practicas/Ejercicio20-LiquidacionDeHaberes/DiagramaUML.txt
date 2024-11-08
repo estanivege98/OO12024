@@ -1,0 +1,22 @@
+@startuml
+Class Empleado{
+}
+Abstract Contrato{
+-fechaInicio: Date
+}
+Class PorHoras{
+-valorHora: Double
+-horasMes: Integer
+-fechaFin: Date
++activo(): Boolean
+}
+Class DePlanta{
+-sueldoMensual: Real
+-montoConyuge: Real
+-montoHijo: Real
+}
+Empleado -->"contratoActivo" Contrato
+Empleado -->"contratos 0..*" Contrato
+DePlanta -up-^ Contrato
+PorHoras -up-^ Contrato
+@enduml
