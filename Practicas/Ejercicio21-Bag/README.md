@@ -1,1 +1,5 @@
-Arquetipos de Orientacion a Objetos
+# Ejercicio 21 - Bag
+
+## Parte 1
+
+## Parte 2

@@ -1,1 +1,2 @@
-Arquetipos de Orientacion a Objetos
+# Ejercicio 22 - Estadísticas de clientes por correo
+
