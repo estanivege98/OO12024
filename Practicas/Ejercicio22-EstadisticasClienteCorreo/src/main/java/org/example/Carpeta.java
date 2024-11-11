@@ -51,14 +51,16 @@ public class Carpeta {
     // devuelve cantidad de emails por categoria segun su tamaño, retorna un objeto
     // Se debe revisar
     public Map<String, Integer> cantiadEmailsPorCategoria(){
-
-        List<String> categorias = this.emails.stream()
-                .map(email -> email.cantidadEmailsPorCategoria())
-                .collect(Collectors.toList());
         Map<String, Integer> map = new HashMap<>();
-        map.put("Pequeño", categorias.indexOf("Pequeño"));
-        map.put("Mediano", categorias.indexOf("Mediano"));
-        map.put("Grande", categorias.indexOf("Grande"));
+        map.put("Pequeño", 0);
+        map.put("Mediano", 0);
+        map.put("Grande", 0);
+
+        for(Email email : this.emails){
+            String categoria = email.cantidadEmailsPorCategoria();
+            map.put(categoria, map.get(categoria) + 1);
+        }
         return map;
+
     }
 }
