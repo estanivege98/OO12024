@@ -1,0 +1,48 @@
+@startuml
+Class Tren{
+-modelo: String
+-marca: String
+-numSerie: String
+-fechaIncorporacion: Date
+-kilometrajeInicial: Integer
++registrarTren()
++registrarViaje(v: Viaje)
++obtenerMontoTareas(mes: Integer)
+}
+Class Viaje{
+-fechaRealizacion: Date
+-kmRecorridos: Integer
+
+}
+class PlanMantenimiento{
+-version: String
+-paraModelo: String
++agregarTPeriodica(t: Tarea)
++agregarTBasadaEnUso(t: Tarea)
+}
+
+abstract Tarea{
+#montoFijo: Real
+#idTarea: Integer
+#tiempoEstimado: Integer
++<<Abstract>>calcularCostoBase(): Real
+
+}
+class TareaTiempo extends Tarea{
+-cantDias: Integer
+}
+class TareaRodadura extends Tarea{
+-cantKm: Integer
+}
+
+class Repuesto{
+-nombre: String
+-costo: Real
+
+}
+
+Tarea -->"repuestos 0..*" Repuesto
+Tren -->"tareas 0..*" Tarea
+PlanMantenimiento -->"tareas0..*" Tarea
+Viaje <-- "viajes 0..*" Tren
+@enduml
