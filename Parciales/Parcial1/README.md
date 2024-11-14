@@ -1,3 +1,3 @@
 ## Parcial 1
 
-![Diagrama UML](./uml.png)
+![Diagrama UML](./UML.png)
