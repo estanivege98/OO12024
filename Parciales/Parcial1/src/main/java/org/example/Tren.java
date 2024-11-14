@@ -31,7 +31,7 @@ public class Tren {
     }*/
 
     public boolean agregarPlanMantenimiento(PlanMantenimiento p) {
-        if (this.plan.getParaModelo().equals(this.modelo)) {
+        if (p.getParaModelo().equals(this.modelo)) {
             this.plan = p;
             return true;
         }
@@ -40,6 +40,10 @@ public class Tren {
 
     public void registrarViaje(Viaje v) {
         this.viajes.add(v);
+    }
+
+    public List<Viaje> obtenerViajes() {
+        return this.viajes;
     }
 
     public double obtenerMontoTareas(int mes) {

@@ -21,6 +21,10 @@ public class PlanMantenimiento {
         return this.paraModelo;
     }
 
+    public List<Tarea> getTareas(){
+        return this.tareas;
+    }
+
     public double obtenerCosto(int mes){
         return this.tareas.stream()
                 .filter(t -> t.getFecha().getMonthValue() == mes)

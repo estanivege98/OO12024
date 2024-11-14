@@ -1,25 +1,15 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Viaje {
-    private Date fechaRealizacion;
+    private LocalDate fechaRealizacion;
     private int kmRecorridos;
 
-    // Getters and setters
-    public Date getFechaRealizacion() {
-        return fechaRealizacion;
-    }
-
-    public void setFechaRealizacion(Date fechaRealizacion) {
+    public Viaje(LocalDate fechaRealizacion, int kmRecorridos) {
         this.fechaRealizacion = fechaRealizacion;
-    }
-
-    public int getKmRecorridos() {
-        return kmRecorridos;
-    }
-
-    public void setKmRecorridos(int kmRecorridos) {
         this.kmRecorridos = kmRecorridos;
     }
+
 }
