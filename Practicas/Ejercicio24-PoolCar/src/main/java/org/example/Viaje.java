@@ -29,7 +29,7 @@ public class Viaje {
     }
 
     public void registrarPasajero(Usuario pasajero) {
-        if(vehiculo.getCapacidad() > pasajeros.size() && this.fecha.minusDays(2).isBefore(LocalDate.now()) && pasajero.getSaldo() > 0) {
+        if(vehiculo.getCapacidad() > pasajeros.size() && this.fecha.minusDays(2).isAfter(LocalDate.now()) && pasajero.getSaldo() > 0) {
             this.pasajeros.add(pasajero);
         }
     }
@@ -37,5 +37,9 @@ public class Viaje {
     // Getters y setters
     public LocalDate getFecha(){
         return this.fecha;
+    }
+
+    public List<Usuario> getPasajeros(){
+        return this.pasajeros;
     }
 }

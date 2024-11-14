@@ -26,11 +26,12 @@ public class ViajeTest {
     @Test
     void testProcesarViaje(){
         conductor.cargarSaldo(600);
-        viaje = conductor.registrarViaje("A", "B", 1000, vehiculo, LocalDate.now());
+        viaje = conductor.registrarViaje("A", "B", 1000, vehiculo, LocalDate.of(2024, 11, 28));
         pasajero.cargarSaldo(600);
         viaje.registrarPasajero(pasajero);
         viaje.procesarViaje();
         assertEquals(40, pasajero.getSaldo());
         assertEquals(1094, conductor.getSaldo());
+        assertEquals(2, viaje.getPasajeros().size());
     }
 }
