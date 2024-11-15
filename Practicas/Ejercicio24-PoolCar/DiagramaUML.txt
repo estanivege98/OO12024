@@ -1,0 +1,56 @@
+@startuml
+abstract class Usuario {
+    -saldo: Real
+    -nombre: String
+    
+
+    +<<create>>Usuario(nom: String)
+    +<<abstract>> calcularBonificacion(): Double
+    +<<abstract>> cargarSaldo(monto: Real)
+    +getViajes(): List<Viaje>
+    +getSaldo(): Double
+    +restarCosto(costo: Double)
+}
+
+class Conductor {
+    +registrarViaje(or: String, des: String, costo: Real, ve: Vehiculo, fe: Date)
+}
+
+class Pasajero {
+    +<<create>>Pasajero(nom: String)
+    +viajePasado(): Boolean
+    +calcularBonificacion(): Double
+    +cargarSaldo(monto: Real)
+}
+
+class Vehiculo {
+    -descripcion: String
+    -capacidad: Integer
+    -añoFabricacion: Integer
+    -valorMercado: Real
+    +<<create>>Vehiculo(des: String, cap: Integer, año: Integer, valor: Real)
+    +getCapacidad(): Integer
+    +getAñoFabricacion(): Integer
+    +getValorMercado(): Real
+}
+
+class Viaje {
+    -origen: String
+    -destino: String
+    -costoTotal: Real
+    -fecha: LocalDate
+    -vehiculo: Vehiculo
+
+    +<<create>>Viaje(origen: String, destino: String, costoTotal: Real, fecha: LocalDate, vehiculo: Vehiculo)
+    +procesarViaje()
+    +registrarPasajero(pasajero: Usuario)
+    +getFecha(): LocalDate
+}
+
+Usuario ^-- Pasajero
+Usuario ^-- Conductor
+Conductor -- "dueño" Vehiculo
+Viaje --> Vehiculo
+Viaje -right-> Usuario : "pasajeros 0..*"
+Usuario --> Viaje : "viajes 0..*"
+@enduml

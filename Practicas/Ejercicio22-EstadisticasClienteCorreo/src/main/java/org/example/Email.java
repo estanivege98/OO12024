@@ -35,7 +35,21 @@ public class Email {
     public boolean contieneTexto(String texto){
         return this.titulo.contains(texto) || this.cuerpo.contains(texto);
     }
+
     public int tamañoMail(){
         return this.cuerpo.length() + this.titulo.length() +this.adjuntos().stream().mapToInt(Archivo::tamañoFile).sum();
+    }
+
+    public String cantidadEmailsPorCategoria(){
+        if(this.tamañoMail() < 100){
+            return "Pequeño";
+        }
+        else if(this.tamañoMail() < 500){
+            return "Mediano";
+        }
+        else{
+            return "Grande";
+        }
+
     }
 }

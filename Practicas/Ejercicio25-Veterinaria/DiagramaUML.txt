@@ -1,0 +1,76 @@
+@startuml
+
+interface IServicio {
+    +calcularCosto(): double
+    +getFecha(): LocalDate
+}
+
+Class Mascota {
+    -nombre: String
+    -fechaNacimiento: Date
+    -especie: String
+    -servicios: List<IServicio>
+
+    +Mascota(nombre: String, fechaNacimiento: Date, especie: String)
+    +getServicios(): List<IServicio>
+    +calcularMontoServicios(fecha: LocalDate): double
+}
+
+Class Veterinario {
+    -nombre: String
+    -fechaIngreso: LocalDate
+    -honorarios: double
+
+    +Veterinario(nombre: String, fechaIngreso: LocalDate, honorarios: double)
+    +getHonorarios(): double
+    +getAntiguedad(): int
+    +altaConsultaMedica(mascota: Mascota): ConsultaMedica
+    +altaVacunacion(mascota: Mascota, nombreVacuna: String, costoVacuna: double): Vacunacion
+    +altaGuarderia(mascota: Mascota, cantidadDias: int): Guarderia
+}
+
+abstract class Servicio implements IServicio {
+-veterinario: Veterinario
+    -mascota: Mascota    
++calcularCosto(): double
+    +getFecha(): LocalDate
+
+}
+
+class Vacunacion extends Servicio {
+    -nombreVacuna: String
+    -costoVacuna: double
+    -fechaVacunacion: LocalDate
+
+    +Vacunacion(mascota: Mascota, nombreVacuna: String, costoVacuna: double, veterinario: Veterinario, fechaVacunacion: LocalDate)
+    +getFecha(): LocalDate
+    +calcularCosto(): double
+}
+
+class Guarderia implements IServicio {
+    -cantidadDias: int
+    -mascota: Mascota
+    -inicioGuarderia: LocalDate
+
+    +Guarderia(mascota: Mascota, cantidadDias: int)
+    +getFecha(): LocalDate
+    +calcularCosto(): double
+}
+
+class ConsultaMedica extends Servicio {
+    -fechaAtencion: LocalDate
+   
+
+    +ConsultaMedica(fechaAtencion: LocalDate, veterinario: Veterinario, mascota: Mascota)
+    +getFecha(): LocalDate
+    +calcularCosto(): double
+}
+
+
+ConsultaMedica --> Veterinario
+Mascota <-- Vacunacion
+Vacunacion -left-> Veterinario
+ConsultaMedica --> Mascota
+Guarderia --> Mascota
+Mascota -->"servicios 0..*" IServicio
+@enduml
