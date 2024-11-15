@@ -9,7 +9,7 @@ public class Pasajero extends Usuario {
     }
 
     public boolean viajePasado() {
-        return super.getViajes().size() > 0;
+        return getViajes().size() > 0;
     }
 
     @Override
@@ -19,7 +19,7 @@ public class Pasajero extends Usuario {
 
     @Override
     public void cargarSaldo(double monto) {
-        Viaje vi = super.getViajes().stream()
+        Viaje vi = getViajes().stream()
                 .filter(v -> v.getFecha().minusDays(30).isBefore(LocalDate.now()))
                 .findFirst().orElse(null);
         if (vi == null){

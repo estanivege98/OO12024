@@ -13,7 +13,7 @@ public class Conductor extends Usuario {
 
         Viaje viaje = new Viaje(origen, destino, costo, fecha, vehiculo);
         viaje.registrarPasajero(this);
-        super.getViajes().add(viaje);
+        getViajes().add(viaje);
         return viaje;
     }
 
