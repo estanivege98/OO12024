@@ -1,4 +1,4 @@
 ## Ejercicio 25 - Veterinaria
 
 ## Revisado
-![Diagrama UML](./uml.png)
+![Diagrama UML](./umlv2.png)
