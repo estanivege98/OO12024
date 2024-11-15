@@ -6,10 +6,10 @@ public abstract class Servicio implements IServicio{
     protected Veterinario veterinario;
     protected Mascota mascota;
 
-    /*public Servicio(Veterinario veterinario, Mascota mascota) {
+    public Servicio(Veterinario veterinario, Mascota mascota) {
         this.veterinario = veterinario;
         this.mascota = mascota;
-    }*/
+    }
 
 
 

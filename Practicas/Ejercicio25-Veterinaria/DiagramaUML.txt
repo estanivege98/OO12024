@@ -9,7 +9,6 @@ Class Mascota {
     -nombre: String
     -fechaNacimiento: Date
     -especie: String
-    -servicios: List<IServicio>
 
     +Mascota(nombre: String, fechaNacimiento: Date, especie: String)
     +getServicios(): List<IServicio>
@@ -30,8 +29,6 @@ Class Veterinario {
 }
 
 abstract class Servicio implements IServicio {
--veterinario: Veterinario
-    -mascota: Mascota    
 +calcularCosto(): double
     +getFecha(): LocalDate
 
@@ -49,7 +46,6 @@ class Vacunacion extends Servicio {
 
 class Guarderia implements IServicio {
     -cantidadDias: int
-    -mascota: Mascota
     -inicioGuarderia: LocalDate
 
     +Guarderia(mascota: Mascota, cantidadDias: int)
@@ -59,7 +55,7 @@ class Guarderia implements IServicio {
 
 class ConsultaMedica extends Servicio {
     -fechaAtencion: LocalDate
-   
+
 
     +ConsultaMedica(fechaAtencion: LocalDate, veterinario: Veterinario, mascota: Mascota)
     +getFecha(): LocalDate
@@ -67,10 +63,8 @@ class ConsultaMedica extends Servicio {
 }
 
 
-ConsultaMedica --> Veterinario
-Mascota <-- Vacunacion
-Vacunacion -left-> Veterinario
-ConsultaMedica --> Mascota
-Guarderia --> Mascota
+Servicio -->"veterinario" Veterinario
+Mascota "mascota"<-- Servicio
+Guarderia -->"mascota" Mascota
 Mascota -->"servicios 0..*" IServicio
 @enduml

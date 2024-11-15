@@ -10,10 +10,9 @@ public class Vacunacion extends Servicio{
     private LocalDate fechaVacunacion;
 
     public Vacunacion(Mascota mascota, String nombreVacuna, double costoVacuna, Veterinario veterinario, LocalDate fechaVacunacion) {
-        this.mascota = mascota;
+        super(veterinario, mascota);
         this.nombreVacuna = nombreVacuna;
         this.costoVacuna = costoVacuna;
-        this.veterinario = veterinario;
         this.fechaVacunacion = fechaVacunacion;
         this.mascota.agregarServicio(this);
     }

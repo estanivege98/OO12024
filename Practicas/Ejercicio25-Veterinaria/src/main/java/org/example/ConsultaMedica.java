@@ -8,10 +8,9 @@ public class ConsultaMedica extends Servicio{
     //private Veterinario veterinario;
     //private Mascota mascota;
 
-    public ConsultaMedica(LocalDate fechaAtencion, Veterinario veterinario, Mascota mascota) {
+    public ConsultaMedica(LocalDate fechaAtencion,Veterinario veterinario, Mascota mascota) {
+        super(veterinario, mascota);
         this.fechaAtencion = fechaAtencion;
-        this.veterinario = veterinario;
-        this.mascota = mascota;
         this.mascota.agregarServicio(this);
     }
 
