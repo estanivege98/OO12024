@@ -1,5 +1,12 @@
 # Parcial Redictado OO1 2024, segunda fecha
 
+## Parcial:
+![ParcialHoja1](./img.png)
+![ParcialHoja2](./img2.png)
+
+## UML:
+![UML](./UML.png)
+
 ## Testeos:
 ### Clase Usuario:
 -Retirar bicileta con abono valido e invalido
