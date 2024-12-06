@@ -1,0 +1,51 @@
+@startuml
+
+class Bicicleta {
+-id: Integer
+}
+
+class Estacion {
+-direccion: String
+-cantidadLugaresDisponible: Integer
++<<create>> Estacion(dir: String, cantL: Integer)
++agregarBicicleta(b: Bicicleta)
+}
+
+class Usuario {
+-ID: String
+-nombre: String
+-apellido: String
+-fechaRetiro: LocalDate
++<<create>> Usuario(id: String, nom: String, ape: String, tarjetaCredito: Tarjeta)
++retirarBicicleta()
++devolverBicicleta()
+}
+
+class Tarjeta {
+-nombre: String
+-numero: String
++<<create>> Tarjeta(nom: String, num: String)
+}
+
+interface IAbono {
++<<abstract>> calcularCosto(): Real
++<<abstract>> esValido(): Boolean
++<<abstract>> abonoDisponible(): Real
+}
+
+class AbonoAnual implements IAbono {
+-fechaInicio: LocalDate
+-montoPagado: Real
+}
+
+class AbonoPrepago implements IAbono {
+-saldo: Real
++cargarSaldo(saldo: Real)
+}
+
+Usuario --> IAbono: abono
+Usuario --> Tarjeta: tarjeta
+Estacion --> Bicicleta: bicicletas
+Usuario --> Bicicleta: bicicletaEnUso
+
+@enduml
