@@ -1,0 +1,28 @@
+Testeos:
+
+Entrada:
+- Testearia el metodo "calcularPrecioEntrada" con o sin seguro.
+- El metodo "calcularMontoARecuperar" con una entrada de antiguedad mayor a 30 dias, menor, e igual a 30 dias.
+
+Presencial:
+- Testearia el metodo "calcularPrecioAsistencia" con fecha igual a la actual o anterior
+
+Virtual:
+- Testearia lo mismo que en presencial
+
+Usuario:
+- Testearia el metodod "calcularMontoPeriodo" para una fecha sin entradas, y una fecha con entrada
+- Testearia el metodo "siguienteEntrada" para un usuario que tiene entradas y otro sin
+
+Implementacion;
+
+Sede sede1 = new Sede("sede1", 50, 3);
+Sede sede2 = new Sede("sede2", 100, 3);
+
+Evento presencial = new Presencial("presencial", 10-12-2024, "Sobre nada", 100, 50);
+presencial.agregarSede(sede1);
+presencial.agregarSede(sede2);
+
+Usuario user = new Usuario("Gustavo");
+
+user.comprarEntrada(presencial, false);

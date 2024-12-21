@@ -1,0 +1,24 @@
+En la clase Humano testearia:
+- Subir nivel con un nivel menor a 7, o >= 7
+- Calcular el poder de ataque entre las 8 y las 20, a las 8, a las 20 y por fuera del rango de 8 a 20
+
+En la clase Orco testearia:
+- Subir nivel con un nivel multiplo de 3, o no multiplo de 3
+- Calcular el poder de ataque entre las 8 y las 20, a las 8, a las 20 y por fuera del rango de 8 a 20
+
+En la clase Personaje:
+- Testear el enfrentamieno entre un personaje y otro cuando es de dia, y de noche
+- Ademas testear cuando ganan uno o el otro, y cuando hay empate
+- Testear el metodo "buscarOponente" cuando hay oponentes similares y cuando no hay oponentes similares
+
+Implementacion:
+
+IRol mago = new Mago();
+IRol guerrero = new Guerrero();
+
+Personaje humano = new Humano("Juan", mago);
+Personaje orco = new Orco("Pedro", guerrero);
+
+humano.enfrentar(orco, 22);
+humano.cambiarRol(guerrero);
+humano.enfrentar(orco, 14);
