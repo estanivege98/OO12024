@@ -1,0 +1,39 @@
+@startuml
+abstract Producto {
+-retiro: Boolean
+-precio: Real
++<<create>>Producto(retiro: Boolean, precio: Real)
++getPrecio(): Real
++promo(): Real
+}
+abstract Bebida{
+-caliente: Boolean
++<<create>>Bebida(retiro: Boolean, precio: Real, caliente: Boolean)
++esFrio(): Boolean
+}
+class Cafe{
+
+}
+abstract Comida{
+-vegano: Boolean
+-celiaco: Boolean
++<<create>>Comida(retiro: Boolean, precio: Real, vegano: Boolean, celiaco: Boolean)
+
+}
+class Pedido{
+-pagado: Boolean
++<<create>>Pedido()
++agregarProducto(producto: Producto)
++calcularDescuento(): Real
+}
+
+interface IPromociones{
++promo(): Boolean
+}
+Pedido -->"productos 0..n" Producto
+Bebida -up-|> Producto
+Cafe -up-|> Bebida
+Comida -up-|> Producto
+Pedido ..|>"promociones" IPromociones
+IPromociones .left.|> Producto
+@enduml

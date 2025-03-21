@@ -4,7 +4,7 @@ import java.util.List;
 public class Pedido {
     private List<Producto> productos;
     private boolean pagado;
-    private IPromociones promociones;
+    //private IPromociones promociones;
 
     public Pedido(){
         this.pagado = false;
@@ -18,7 +18,7 @@ public class Pedido {
 
     public double calcularDescuento(){
         double productoDescuentos = this.productos.stream()
-                .mapToDouble(producto -> producto.getPrecio() - producto.getPrecio()*promociones.promo())
+                .mapToDouble(producto -> producto.getPrecio() - producto.getPrecio()*producto.promo())
                 .sum();
         return productoDescuentos;
     }
