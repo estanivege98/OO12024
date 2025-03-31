@@ -28,7 +28,7 @@ public class Grupo {
         return this.alumnos.size() * 0.5;
     }
 
-    public double cantidadDocentes() {
+    public int cantidadDocentes() {
         return this.docentes.size();
     }
 
