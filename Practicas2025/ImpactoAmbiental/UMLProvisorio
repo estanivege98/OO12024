@@ -1,0 +1,66 @@
+@startuml
+Abstract Visita{
+#fecha: String
+#duracion: Integer
++<<create>>Visita(fecha: String, duracion: Integer)
++calcularImpactoAmbiental(): Real
++listarParticipantes(): List
+}
+class VisitaRecreativa{
++<<create>>Visita(fecha: String, duracion: Integer)
++calcularImpactoAmbiental(): Real
++listarParticipantes(): List
++agregarParticipante(participante: Participante)
+}
+class VisitaEducativa{
++<<create>>Visita(fecha: String, duracion: Integer)
++calcularImpactoAmbiental(): Real
++listarParticipantes(): List
++agregarGrupo(grupo: Grupo)
+}
+class Grupo{
+-colegio: String
+-id: Integer
++<<create>>Grupo(colegio: String, id: Integer)
++agregarAlumno(alumno: Participante)
++agregarDocente(docente: Participante)
++impactoAlumnos(): Real
++cantidadDocentes(): Integer
++ordenarAlumnos(): List
++ordernarDocentes(): List
+}
+class Participante{
+-nombre: String
+-apellido: String
++<<create>>Participante(nombre: String, apellido: String)
++getNombre(): String
++getApellido(): String
++toString(): String
+}
+class VisitaCientifica{
++<<create>>Visita(fecha: String, duracion: Integer)
++calcularImpactoAmbiental(): Real
++listarParticipantes(): List
++agregarParticipante(participante: Participante)
++agregarZona(zona: Zona)
+}
+class Zona{
+-restringida: Boolean
+-nombre: String
+-descripcion: String
++<<create>>Zona(nombre: String, descripcion: String, restringida: Boolean)
++esRestringida(): Real
+}
+
+Visita <|.. VisitaRecreativa
+Visita <|.. VisitaEducativa
+Visita <|.. VisitaCientifica
+Zona "0..*"<--"zonas" VisitaCientifica
+VisitaCientifica "0..*"-->"1..*" Participante
+VisitaRecreativa "0..*"-->"1..*" Participante
+VisitaEducativa "0..*"-->"1..*" Grupo
+Grupo "docentes"-->"1.." Participante
+Grupo "alumnos"-->"1.." Participante
+
+
+@enduml
