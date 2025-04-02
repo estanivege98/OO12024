@@ -16,9 +16,13 @@ public class VisitaEducativa extends Visita {
         this.grupos.add(grupo);
     }
 
+    private double baseImpacto(){
+        return 2 * this.grupos.size() * this.duracion;
+    }
+
     public double calcularImpactoAmbiental() {
          return this.grupos.stream()
-                .mapToDouble(g -> (g.impactoAlumnos() * this.duracion) - (g.cantidadDocentes() * this.duracion) + 2 * this.duracion)
+                .mapToDouble(g -> (g.impactoAlumnos() * this.duracion) - (g.cantidadDocentes() * this.duracion) + (baseImpacto()))
                 .sum();
     }
 
