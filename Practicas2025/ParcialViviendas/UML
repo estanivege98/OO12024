@@ -1,0 +1,56 @@
+@startuml
+
+class Cliente{
+-nombre: String
+-direccion: String
++<<create>>Cliente(nombre: String, direccion: String): Cliente
++contratarPorUnicaVez(fe: Date, servicio: Servicio)
++contratarProlongado(feIni: Date, cantDias: Integer, servicio: Servicio)
++obtenerMontoAPagar(): Real
++agregarContratacion(contratacion: Contratacion)
+}
+
+abstract Servicio{
+-precioHora: Real
+-cantidadHoras: Integer
++<<create>>Servicio(preHora: Real, cantHora: Integer)
++<<abstract>>montoAbonar(): Real
++getPrecio(): Real
+}
+
+class ServicioLimpieza{
+-tarifaMinima: Real
++<<create>>ServicioLimpieza(preHora: Real, cantHora: Integer, tarMinima: Real)
+}
+
+class ServicioParquizacion{
+-cantMaquinas: Integer
+-costoMantenimiento: Real
++<<create>>ServicioParquizacion(preHora: Real, cantHora: Integer, cantMaq: Integer, cosMin: Real)
++getCostoMantenimiento(): Boolean
+}
+
+abstract Contratacion{
+-fecha: Date
++<<create>>Servicio(fecha: Date, serv: Servicio)
++<<abstract>>montoAbonar(): Real
++getFecha(): LocalDate
++getServicio(): Servicio
+}
+class UnicaVez{
++<<create>>UnicaVez(fecha: Date, serv: Servicio)
+-finDeSemana(): Boolean
+}
+class Prolongado{
+-cantDias: Integer
++<<create>>Prolongado(fecha: Date, serv: Servicio, cantDias: Integer)
+-mas5Dias(): Boolean
+}
+Cliente "contrataciones"--> "0..n" Contratacion
+Contratacion --> Servicio : "servicio"
+Contratacion <|-- UnicaVez
+Contratacion <|-- Prolongado
+Servicio <|-- ServicioLimpieza
+Servicio <|-- ServicioParquizacion
+
+@enduml
