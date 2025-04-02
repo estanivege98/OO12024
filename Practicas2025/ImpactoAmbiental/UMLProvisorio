@@ -3,8 +3,8 @@ Abstract Visita{
 #fecha: String
 #duracion: Integer
 +<<create>>Visita(fecha: String, duracion: Integer)
-+calcularImpactoAmbiental(): Real
-+listarParticipantes(): List
++<<abstract>>calcularImpactoAmbiental(): Real
++<<abstract>>listarParticipantes(): List
 }
 class VisitaRecreativa{
 +<<create>>Visita(fecha: String, duracion: Integer)
@@ -52,9 +52,9 @@ class Zona{
 +esRestringida(): Real
 }
 
-Visita <|.. VisitaRecreativa
-Visita <|.. VisitaEducativa
-Visita <|.. VisitaCientifica
+Visita <|-- VisitaRecreativa
+Visita <|-- VisitaEducativa
+Visita <|-- VisitaCientifica
 Zona "0..*"<--"zonas" VisitaCientifica
 VisitaCientifica "0..*"-->"1..*" Participante
 VisitaRecreativa "0..*"-->"1..*" Participante
