@@ -1,0 +1,50 @@
+@startuml
+
+class Contribuyente{
+  -nombre: String
+  -DNI: Integer
+  -localidad: String
+  -mail: String
+  +<<create>> Contribuyente(nombre: String, DNI: Integer, localidad: String, mail: String)
+  +calcularImpuesto(): Real
+}
+
+abstract class Bien{
+  -contribuyente: Contribuyente
+  +<<create>> Bien(contribuyente: Contribuyente)
+  +<<abstract>>calcularImpuesto(): Real
+}
+
+class Inmueble{
+  -numeroPartida: Integer
+  -valorLote: Real
+  -valorEdificacion: Real
+  +<<create>> Inmueble(numeroPartida: Integer, valorLote: Real, valorEdificacion: Real, contribuyente: Contribuyente)
+}
+
+abstract class Vehiculo{
+  -patente: String
+  -fechaFabricacion: LocalDate
+  -valor: Real
+  +<<create>> Vehiculo(patente: String, fechaFabricacion: LocalDate, valor: Real, contribuyente: Contribuyente)
+  +<<abstract>>calcularImpuestoPersonal(): Real
+}
+
+class Automotor{
+  -marca: String
+  -modelo: String
+  +<<create>> Automotor(patente: String, fechaFabricacion: LocalDate, valor: Real, contribuyente: Contribuyente, marca: String, modelo: String)
+}
+
+class Embarcacion{
+  -nombre: String
+  +<<create>> Embarcacion(patente: String, fechaFabricacion: LocalDate, valor: Real, contribuyente: Contribuyente, nombre: String)
+}
+
+Contribuyente --> Bien : "bienes 0..n"
+Bien <|-- Vehiculo
+Bien <|-- Inmueble
+Vehiculo <|-- Automotor
+Vehiculo <|-- Embarcacion
+
+@enduml
