@@ -1,0 +1,80 @@
+@startuml
+
+class Cliente {
+  -nombre: String
+  -fechaAlta: LocalDate
+  -plan: Plan
+  +Cliente(nombre: String, fechaAlta: LocalDate, plan: Plan)
+  +cambiarPlan(plan: Plan)
+  +montoACobrar(fechaFin: LocalDate, fechaIni: LocalDate): double
+  +montoACobrarActividad(fechaFin: LocalDate, fechaIni: LocalDate): double
+  +montoPenalizacion(fechaFin: LocalDate, fechaIni: LocalDate): double
+  +mayorQue10(): boolean
+  +agregarActividad(actividad: Actividad)
+
+}
+
+abstract class Plan {
+  -cantLimite: int
+  -cliente: Cliente
+  +Plan(cantLimite: int, cliente: Cliente)
+  +calcularPrecioBasePlan(): double
+  +montoPorPenalizacion(cantActividades: int): double
+  +mayorQue10(): boolean
++asignarCliente(cliente: Cliente)
+}
+
+class Individual {
+  -cantMinutos: int
+  +Individual(cantMinutos: int, cliente: Cliente)
+  +calcularPrecioBasePlan(): double
+  +montoPorPenalizacion(cantActividades: int): double
+}
+
+class Grupal {
+  +Grupal(cantLimite: int, cliente: Cliente)
+  +calcularPrecioBasePlan(): double
+  +montoPorPenalizacion(cantIps: int): double
+  -mayor10(): boolean
+}
+
+abstract class Actividad {
+  -fechaInicio: LocalDate
+  -dirIp: String
+  -duracionTotal: int
+  +Actividad(fechaInicio: LocalDate, dirIp: String, duracionTotal: int)
+  +calcularActividad(): double
+  +estaEnPeriodo(fechaFin: LocalDate, fechaIni: LocalDate): boolean
+}
+
+class Video {
+  -duracionPublicidad: int
+  +Video(fechaInicio: LocalDate, dirIp: String, duracionTotal: int, duracionPublicidad: int)
+  +obtenerDuracionReal(): int
+  +calcularActividad(): double
+}
+
+class Juego {
+  +Juego(fechaInicio: LocalDate, dirIp: String, duracionTotal: int, items: List<Item>)
+  +utilizarItem(item: Item)
+  +calcularActividad(): double
+}
+
+class Item {
+  -nombre: String
+  -precioUnitario: double
+  -cant: int
+  +Item(nombre: String, precioUnitario: double, cant: int)
+  +precioFinal(): double
+}
+
+Cliente --> Plan : "plan"
+Cliente --> Actividad : "actividades 0..n"
+Plan <|-- Individual
+Plan <|-- Grupal
+Actividad <|-- Video
+Actividad <|-- Juego
+Juego --> Item : "items 0..n"
+Plan --> Cliente : "cliente"
+
+@enduml
